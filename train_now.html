@@ -420,15 +420,12 @@ xhr.onload = function(){
     function search(departure,arrive){
         document.querySelector(".trainList").innerHTML = "";
         var myTrain = [];
-        for(var a=0;a<dataLen;a++){
-            var willStop = []; //本班車會到的站
-            var list = []; //用一個陣列儲存物件(物件為{station: "新竹", time: "11:37"}.......)
-            var len = data[a].StopTimes.length;
-            for(let i=0;i<len;i++){
+        for(let i=0;i<len;i++){
                 var train = {};
                 willStop.push(data[a].StopTimes[i].StationName.Zh_tw);
-                train.station = data[a].StopTimes[i].StationName.Zh_tw;
-                train.time = data[a].StopTimes[i].DepartureTime;                
+                train.station = data[a].StopTimes[i].StationName.Zh_tw;                
+                train.dtime = data[a].StopTimes[i].DepartureTime;
+                train.atime = data[a].StopTimes[i].ArrivalTime;
                 list.push(train);
             }
 
@@ -452,9 +449,9 @@ xhr.onload = function(){
                     //寫入起訖時間
                     for(let i=0;i<list.length;i++){
                         if(list[i].station == departure){
-                            thisTrain.time1 = list[i].time;
+                            thisTrain.time1 = list[i].dtime;
                         }else if(list[i].station == arrive){
-                            thisTrain.time2 = list[i].time;
+                            thisTrain.time2 = list[i].atime;
                         }else{}
                     }
                     //處理火車車種
