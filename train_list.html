@@ -515,14 +515,12 @@ xhr.onload = function(){
         myTrainLen = myTrain.length;
         for(let i=0;i<myTrainLen;i++){
         	var li = document.createElement("li");
-            if(myTrain[i].status == thisnum ){
-           		//if(myTrain[i].time1 > thisTime){
+            if(myTrain[i].status == thisnum ){           		
                 li.innerHTML = '<div class="left">' + '<p>' + (i+1) + '</p><span class="material-icons ' 
                 + myTrain[i].color + '">'
                 + myTrain[i].TrainTypeName + '  ' + myTrain[i].TrainNo + '</span></div><div class="right"><p>'
                 + myTrain[i].time1 + '</p>' + '<p><span class="glyphicon glyphicon-arrow-right"> </span></p><p>'                             + myTrain[i].time2 + '</p></div>';
-                trainList.appendChild(li);
-                //}
+                trainList.appendChild(li);              
             }
         }
     }
